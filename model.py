@@ -81,6 +81,7 @@ def fetchprediction(backWhiteImg):
     return classifier.getPrediction(backWhiteImg)
 
 
+
 # open the webcam and detect the user's hand
 while True:
     # store the user's image after capturing
@@ -194,5 +195,13 @@ while True:
         text_to_speech = pyttsx3.init()
         text_to_speech.say(ans3.split())
         text_to_speech.runAndWait()
+
+    f = open("output.txt", "w")
+    f.write(ans3)
+    f.close()
+
+
+
+
 
 
