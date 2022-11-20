@@ -20,7 +20,7 @@ sizeOfImage = 300
 count = 0
 
 #folder path
-folder = "dataSet/A"
+folder = "dataSet/W"
 
 
 # open the webcam and detect the user's hand
@@ -66,7 +66,7 @@ while True:
             # @param2 new dimensions (width, height)
             resizedImage = cv2.resize(croppedImage, (calculatedWidth, sizeOfImage))
 
-            widthGap = math.ceil((sizeOfImage - calculatedWidth) / 2)
+            widthGap = math.ceil((sizeOfImage - calculatedWidth)/2)
 
             # center the cropped image overlaying the white image
             whiteImage[:, widthGap:calculatedWidth + widthGap] = resizedImage
@@ -78,13 +78,13 @@ while True:
             # resizing the image
             # @param1 image to be resized
             # @param2 new dimensions (width, height)
-            resizedImage = cv2.resize(croppedImage, (calculatedHeight, sizeOfImage))
+            resizedImage = cv2.resize(croppedImage, (sizeOfImage, calculatedHeight))
 
             heightGap = math.ceil((sizeOfImage - calculatedHeight) / 2)
 
 
             # center the cropped image overlaying the white image
-            whiteImage[:, heightGap:calculatedHeight + heightGap] = resizedImage
+            whiteImage[heightGap:calculatedHeight + heightGap, :] = resizedImage
 
 
 
