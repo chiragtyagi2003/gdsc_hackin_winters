@@ -16,12 +16,44 @@ margin = 20
 # size of white image
 sizeOfImage = 300
 
-#count of saved image
+# count of saved image
 count = 0
 
-#folder path
+# folder path
 folder = "dataSet/W"
 
+# @param1 fixed size of image
+# @param2 width of the image
+# @param3 height of image
+def calculateNewHeight(imgSize, width, height):
+    """ returns the new calculated height for resizing"""
+    constant = imgSize/width
+    newHeight = math.ceil(constant * height)
+    return newHeight
+
+# @param1 fixed size of image
+# @param2 width of the image
+# @param3 height of image
+def calculateNewWidth(imgSize, width, height):
+    """ returns the new calculated width for resizing"""
+    constant = imgSize / height
+    newWidth = math.ceil(constant * width)
+    return newWidth
+
+# @param1 fixed size of image
+# @param2 calculated height for resizing
+def calculateHeightGap(imgSize, newHeight):
+    """returns the calculated height gap"""
+    calculatedHeightGap = math.ceil((imgSize - newHeight)/2)
+    return calculatedHeightGap
+
+
+# @param1 fixed size of image
+# @param2 calculated width for resizing
+def calculateWidthGap(imgSize, newWidth):
+    """returns the calculated width gap"""
+    calculatedWidthGap = math.ceil((imgSize - newWidth)/2)
+    return calculatedWidthGap
 
 # open the webcam and detect the user's hand
 while True:
@@ -40,7 +72,6 @@ while True:
         # @param1 area of detected hand
         x, y, w, h = hand['bbox']
 
-
         # cropped image for better data traing
         croppedImage = img[y-margin:y+h+margin, x-margin:x+w+margin]
 
@@ -58,37 +89,33 @@ while True:
         # stretch the height to 300 and then
         # calculate width
         if aspectRatio > 1:
-            constant = sizeOfImage/h
-            calculatedWidth = math.ceil(constant*w)
+            # calculate new width for resizing
+            calculatedWidth = calculateNewWidth(sizeOfImage, w, h)
 
             # resizing the image
             # @param1 image to be resized
             # @param2 new dimensions (width, height)
             resizedImage = cv2.resize(croppedImage, (calculatedWidth, sizeOfImage))
 
-            widthGap = math.ceil((sizeOfImage - calculatedWidth)/2)
+            # compute the width gap
+            widthGap = calculateWidthGap(sizeOfImage, calculatedWidth)
 
             # center the cropped image overlaying the white image
             whiteImage[:, widthGap:calculatedWidth + widthGap] = resizedImage
 
         else:
-            constant = sizeOfImage/w
-            calculatedHeight = math.ceil(constant*h)
+            # compute new height for resizing
+            calculatedHeight = calculateNewHeight(sizeOfImage, w, h)
 
             # resizing the image
             # @param1 image to be resized
             # @param2 new dimensions (width, height)
             resizedImage = cv2.resize(croppedImage, (sizeOfImage, calculatedHeight))
 
-            heightGap = math.ceil((sizeOfImage - calculatedHeight) / 2)
-
+            heightGap = calculateHeightGap(sizeOfImage, calculatedHeight)
 
             # center the cropped image overlaying the white image
             whiteImage[heightGap:calculatedHeight + heightGap, :] = resizedImage
-
-
-
-
 
         # show the cropped image
         cv2.imshow("ImageCrop", croppedImage)
@@ -97,12 +124,11 @@ while True:
         cv2.imshow("WhiteImage", whiteImage)
 
 
-
-
-
     # show the initial image
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
+
+    # save the image to destined path
     if key == ord("s"):
         count += 1
         cv2.imwrite(f'{folder}/image_{time.time()}.jpg', whiteImage)
