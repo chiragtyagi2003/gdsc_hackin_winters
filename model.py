@@ -1,12 +1,14 @@
 import math
-import time
 import cv2
 import numpy as np
+
+#package to convert text to speech
 import pyttsx3
+
 # package for hand detection
 from cvzone.HandTrackingModule import HandDetector
 
-#package for classification
+# package for classification
 from cvzone.ClassificationModule import Classifier
 
 cameraCapture = cv2.VideoCapture(0)
@@ -27,8 +29,10 @@ count = 0
 folder = "dataSet/F"
 
 #classifer from teachable machine
-classifier=Classifier("keras_model.h5","labels.txt")
+classifier=Classifier("keras_model.h5", "labels.txt")
 
+
+# list for letter mapping
 labels = ["A", "B", "C", "D", "E", "F", "H", "K", "N", "O", "T", "I", "L", "W"]
 
 #variables to form string
@@ -36,6 +40,48 @@ ans = ""
 ans2 = ""
 ans3 = ""
 
+
+# @param1 fixed size of image
+# @param2 width of the image
+# @param3 height of image
+def calculateNewHeight(imgSize, width, height):
+    """ returns the new calculated height for resizing"""
+    constant = imgSize/width
+    newHeight = math.ceil(constant * height)
+    return newHeight
+
+# @param1 fixed size of image
+# @param2 width of the image
+# @param3 height of image
+def calculateNewWidth(imgSize, width, height):
+    """ returns the new calculated width for resizing"""
+    constant = imgSize / height
+    newWidth = math.ceil(constant * width)
+    return newWidth
+
+# @param1 fixed size of image
+# @param2 calculated height for resizing
+def calculateHeightGap(imgSize, newHeight):
+    """returns the calculated height gap"""
+    calculatedHeightGap = math.ceil((imgSize - newHeight)/2)
+    return calculatedHeightGap
+
+
+# @param1 fixed size of image
+# @param2 calculated width for resizing
+def calculateWidthGap(imgSize, newWidth):
+    """returns the calculated width gap"""
+    calculatedWidthGap = math.ceil((imgSize - newWidth)/2)
+    return calculatedWidthGap
+
+# @param1 image from which the prediction
+# has to be made
+def fetchprediction(backWhiteImg):
+    """returns the predicted value and index"""
+    return classifier.getPrediction(backWhiteImg)
+
+def convert(keyValue):
+    """converts the sign language into text and speech"""
 
 # open the webcam and detect the user's hand
 while True:
@@ -72,40 +118,46 @@ while True:
         # stretch the height to 300 and then
         # calculate width
         if aspectRatio > 1:
-            constant = sizeOfImage/h
-            calculatedWidth = math.ceil(constant*w)
+            calculatedWidth = calculateNewWidth(sizeOfImage, w, h)
 
             # resizing the image
-            # @param1 image to be resized
-            # @param2 new dimensions (width, height)
             resizedImage = cv2.resize(croppedImage, (calculatedWidth, sizeOfImage))
 
-            widthGap = math.ceil((sizeOfImage - calculatedWidth) / 2)
+            # compute the width gap
+            widthGap = calculateWidthGap(sizeOfImage, calculatedWidth)
 
             # center the cropped image overlaying the white image
             whiteImage[:, widthGap:calculatedWidth + widthGap] = resizedImage
 
-            predictedLetter, predictedIndex = classifier.getPredicted(whiteImage)
+            # predicted letter and predicted index
+            predictedLetter, predictedIndex = fetchprediction(whiteImage)
 
+            # add to the string
             ans += labels[predictedIndex]
 
         else:
-            constant = sizeOfImage/w
-            calculatedHeight = math.ceil(constant*h)
+            # calculate new height of image for
+            # resizing the image
+            calculatedHeight = calculateNewHeight(sizeOfImage, w, h)
 
             # resizing the image
             # @param1 image to be resized
             # @param2 new dimensions (width, height)
-            resizedImage = cv2.resize(croppedImage, (calculatedHeight, sizeOfImage))
+            resizedImage = cv2.resize(croppedImage, (sizeOfImage, calculatedHeight))
 
-            heightGap = math.ceil((sizeOfImage - calculatedHeight) / 2)
+            # compute the height gap
+            # @param1 fixed size of image
+            # @param2 new height calculated for resizing
+            heightGap = calculateHeightGap(sizeOfImage, calculatedHeight)
 
 
             # center the cropped image overlaying the white image
-            whiteImage[:, heightGap:calculatedHeight + heightGap] = resizedImage
+            whiteImage[heightGap:calculatedHeight + heightGap, :] = resizedImage
 
-            predictedLetter, predictedIndex = classifier.getPredicted(whiteImage)
+            # predicted letter and predicted index
+            predictedLetter, predictedIndex = fetchprediction(whiteImage)
 
+            # add to the string
             ans += labels[predictedIndex]
 
 
@@ -117,27 +169,26 @@ while True:
         cv2.imshow("WhiteImage", whiteImage)
 
 
-
-
-
     # show the initial image
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
+
     if key == ord("s"):
 
-        # store the last letter in one prediction
+        # store the last letter
         ans2 = ans[len(ans) - 1]
 
-        # store the final string
+        # add to final string
         ans3 += ans2
-        print(ans3)
 
-        # empty ans2 to store new letter
+        # empty the var to store new letter
         ans2 = ""
+
 
     # enter space between two words
     if key == ord("p"):
         ans3 += " "
+
 
     # convert the text into audio speech
     if key == ord("r"):
@@ -145,4 +196,5 @@ while True:
         text_to_speech = pyttsx3.init()
         text_to_speech.say(ans3.split())
         text_to_speech.runAndWait()
+
 
