@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+    <script src="style.js">
+    </script>
+
+      <style>
+              body{
+
+ }
+ #id{
+  color:white;
+  background-color: #FB2576;
+}
+.container-fluid{
+background-color: #150050;
+  padding:3% 15%;
+  height:500px;
+  width: 100%;
+  color: #FFFFFF;
+}
+h3{
+  color:white;
+}
+#title{
+position: absolute;
+  color:white;
+  padding-top:5px;
+  text-indent:  40px;
+
+}
+.list{ position:absolute;
+top:500px;
+height:200px;
+width:200px;
+background-color:white;
+}
+.navi{
+  color:white;
+}
+
+.container-fluid .navi{
+    background-color: #FB2576;
+    font-size: 1.2rem;
+    color:white;
+
+}
+p{
+  color:white;
+}
+
+.container_2{
+  position:absolute;
+}
+.text_box{
+  position:absolute;
+  height:200px;
+  width:130%;
+
+}
+.aud{
+  position:absolute;
+  top:300px;
+}
+.cam{
+height:200px;
+width:200px;
+top:-30px;
+position: relative;
+left:700px;
+background-color: white;
+}
+<!--input[type=text] {-->
+<!--  position: relative;-->
+<!--  width: 50%;-->
+<!--  height: 90px;-->
+<!--  top:20px;-->
+<!--  left:90px;-->
+<!--  padding: 100px 100px;-->
+<!--  box-sizing: border-box;-->
+<!--  border: 2px solid #ccc;-->
+<!--  border-radius: 4px;-->
+<!--  background-color: #f8f8f8;-->
+<!--  font-size: 20px;-->
+
+<!--}-->
+#cam{
+    background-color:WHITE;
+    position: absolute;
+    top:100px;
+
+  height:200px;
+  width:300px;
+  left:700px;
+
+}
+.aud{
+  position:absolute;
+  top:330px;
+  left:220px;
+  background-color: #EA4C88;
+  color: black;
+  border: 2px solid #FB2576; /* Green */
+  width:100px;
+  height:50px;
+  border-radius: 10px;
+}
+button{
+  position: relative;
+  top:5px;
+left:20px;
+  border-radius: 12px;
+}
+.b1{
+  background-color: white;
+  color: black;
+  border: 2px solid #FB2576;
+  width:100px;
+  border-radius: 10px;
+  top:30px;
+  height:40px;
+}
+.b2{
+  background-color: white;
+  color: black;
+  border: 2px solid #FB2576; /* Green */
+  width:100px;
+  border-radius: 10px;
+  top:30px;
+  height:40px;
+}
+
+#con_text{
+  position: absolute;
+  left: 600px;
+  top:420px;
+  width:300px;
+  length:300px;
+
+}
+#sec_section{
+  top:1100px;
+}
+ .container5{
+    position:relative;
+    height:650px;
+    width:100%;
+     background-color: #E41F7B;
+
+  top:60px;
+
+ }
+ .cont_1{
+   position:absolute;
+    top:320px;
+   left:500px;
+
+   right:0px;
+   transform:translate(-50%,-50%);
+   width:900px;
+   padding:30px 20px;
+   background: #fff;
+   box-sizing:border-box;
+   border-radius:10px;
+   box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+ }
+ .cont_2{
+   position:absolute;
+
+   top:600px;
+
+   width:1000px;
+   padding:30px;
+   background: #fff;
+   box-sizing:border-box;
+   border-radius:10px;
+   box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+ }
+
+.proff{
+  color:red;
+}#foot{
+    background-color: #150050;
+}
+input[type=radio]{
+  display:none;
+}
+.photos{
+  width:100%;
+  text-align: center;
+  top:800px;
+}
+.container_pic{
+  height:1900px;
+
+}
+.photo_gal{
+  font-weight: normal;
+  font-size: 35px;
+  position:relative;
+   margin: 40px 0;
+   top:10px;
+   padding: 20px 20px;
+}
+
+.top-content{
+  background-color: blue;
+  width:90%;
+  margin:0 auto  20px auto;
+  height: 60px;
+  align-items:center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px lightgray;
+
+}
+.h3{
+  height:100%;
+  background-color: pink;
+  line-height: 60px;
+  padding: 0px 0px;
+  color:white;
+}
+label{
+  display: inline-block;
+  height:100%;
+  padding:0 5px;
+  margin: 0 10px;
+  line-height:60px;
+  font-size:18px;
+  color:gray;
+  cursor:pointer;
+  transition:.5s;
+}
+label:hover{
+  color:black;
+}
+.gallery{
+    margin: 10px 50px;
+}
+.gallery img{
+    width:230px;
+    padding:5px;
+    filter:grayscale(100%);
+    transition:1s;
+}
+.gallery img:hover{
+        filter:grayscale(0);
+        transform: scale(1.2);
+
+}
+a img{
+  height:200px;
+  width:200px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px lightgray;
+
+
+
+}
+      </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+
+<!---->
+
+
+    <!-- navigqtion bar bootstrap-->
+    <div class="container-fluid">
+
+<div class="navi">
+
+
+      <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand" href=""><h3 style="color:white"><u><i>Decipherer</i></u></h3></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleDemo02" aria-controls="navbarTogglerDemo02" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+    </button>
+    <ul class="navbar-nav ms-auto-3">
+    <li class="nav-item">
+    <a class="nav-link" href=""style="color:white;padding: 10px 80px 10px 80px;">ENGLISH</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#gal"style="color:white;padding: 10px 80px 10px 80px;">GALLERY</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="#team"style="color:white;padding: 10px 80px 10px 80px;">TEAM</a>
+    </li>
+    </ul>
+
+    </nav>
+
+</div>
+
+<!-- section 2 -->
+
+<section id="title">
+
+
+        <!-- Title -->
+
+        <div>
+          <h1>Solution to people with hearing impairment</h1>
+
+          <div><span>
+  <span id="cam">
+
+
+  </span>
+          <!-- <input type="text" id="con_text" name="text1" value="" maxlength="4" size="40" maxlength="40"cols="40" rows="30" width=200px>
+          <input type="button" name="" value="" onclick="audio()"> -->
+<!--          <form name="myForm" action=" " onsubmit=" audio()" method="post">-->
+        <div><H4>TEXT:</H4>    <div id="list">
+ <p><iframe src="output.txt" frameborder="0" style="height=900px; padding:40px; font-size:1.1rem; background-color:white;" class=""></iframe></p>
+ </div> <br><br><br><br></div>
+<!--          <input type="submit" value="audio" class="aud">-->
+        </form>
+
+<!-- <p id="con_text2"></p>-->
+</span>
+        </div>
+    </div>
+
+
+        </div>
+
+
+
+      </section>
+    <button type="button" class="b1">audio</button>
+      <button type="button" class="b2">  text</button><br>
+      <div id="sec_section">
+        <div class="container5">
+        <div class="cont_1">
+
+
+
+
+        <h1 class="heading"><u>Proposal  </u> </h1>
+        <p class="proff">According to a WHO resource there are approximately 430 million people worldwide belonging to the deaf-mute community. India itself is home to about 63 million Deaf and Mute Individuals(DMI).
+Deaf mutism is a major health problem and limits appropriate communication and learning that is necessary for the normal development and maturation of an individual.
+<br>A service-based platform providing the capability to the deaf-mute individuals to translate their native sign language into text/speech to aid their communication.
+<h3>ASL</h3>
+American Sign Language (ASL) is a natural language that serves as the predominant sign language of Deaf communities in the United States of America and most of Anglophone Canada. ASL is a complete and organized visual language that is expressed by employing both manual and nonmanual features.[5] Besides North America, dialects of ASL and ASL-based creoles are used in many countries around the world, including much of West Africa and parts of Southeast Asia. ASL is also widely learned as a second language, serving as a lingua franca. ASL is most closely related to French Sign Language (LSF). It has been proposed that ASL is a creole language of LSF, although ASL shows features atypical of creole languages, such as agglutinative morphology.
+</p>
+        </div>
+
+        </div>
+      </div>
+
+<a id="gal">
+      <div class="photos">
+      <input type="radio" name="photos" id="check1" value="" checked>
+      <input type="radio" name="photos" value="" id="check2">
+
+      <div class="container_pic">
+        <h1 class="photo_gal"><u><b>Photo Gallery</b></u></h1></a>
+        <div class="top-content">
+          <h3 class="h3">ASL</h3>
+          <label for="check1">ALPHABETS</label>
+            <label for="check2">NUMBERS</label>
+          <div class="gallery">
+            <a href"images/A.jpg"><img src="images/A.jpg"></a>
+            <a href"images/B.jpg"><img src="images/B.jpg"></a>
+            <a href"images/C.jpg"><img src="images/C.jpg"></a>
+        <a href"images/D.jpg"><img src="images/D.jpg"></a>
+         <a href"images/E.jpg"><img src="images/E.jpg"></a>
+            <a href"images/F.jpg"><img src="images/F.jpg"></a>
+            <a href"images/G.jpg"><img src="images/G.jpg"></a>
+            <a href"images/H.jpg"><img src="images/H.jpg"></a>
+            <a href"images/I.jpg"><img src="images/I.jpg"></a>
+            <a href"images/G.jpg"><img src="images/G.jpg"></a>
+            <a href"images/H.jpg"><img src="images/H.jpg"></a>
+            <a href"images/I.jpg"><img src="images/I.jpg"></a>
+            <a href"images/J.jpg"><img src="images/J.jpg"></a>
+            <a href"images/K.jpg"><img src="images/K.jpg"></a>
+            <a href"images/L.jpg"><img src="images/L.jpg"></a>
+            <a href"images/M.jpg"><img src="images/M.jpg"></a>
+            <a href"images/N.jpg"><img src="images/N.jpg"></a>
+            <a href"images/O.jpg"><img src="images/O.jpg"></a>
+            <a href"images/P.jpg"><img src="images/P.jpg"></a>
+            <a href"images/Q.jpg"><img src="images/Q.jpg"></a>
+            <a href"images/R.jpg"><img src="images/R.jpg"></a>
+            <a href"images/S.jpg"><img src="images/S.jpg"></a>
+            <a href"images/T.jpg"><img src="images/T.jpg"></a>
+            <a href"images/U.jpg"><img src="images/U.jpg"></a>
+            <a href"images/V.jpg"><img src="images/V.jpg"></a>
+            <a href"images/W.jpg"><img src="images/W.jpg"></a>
+            <a href"images/X.jpg"><img src="images/X.jpg"></a>
+            <a href"images/Y.jpg"><img src="images/Y.jpg"></a>
+            <a href"images/Z.jpg"><img src="images/Z.jpg"></a>
+
+    </div>
+
+
+
+
+</div>
+</div>
+</div>
+<footer class=" text-white pt-5 pb-4" id="foot">
+  <div class="container text-center text-md-left">
+    <div class="row text-center text-md-left">
+      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">DECIPHER</h5>
+        <p>By virtual velocity <br></p>
+
+      </div>
+      <a id="team">
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">NAMES</h5></a>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">Chirag Tyagi</a>
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">Harshita Ranjan</a>
+
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">Piyush Gupta</a>
+
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">Rahul Anand</a>
+
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">Riya Goyal</a>
+
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">Shantanu Kandwal</a>
+
+        </p>
+
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">links</h5>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">#########</a>
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">#########</a>
+
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">#########</a>
+
+        </p>
+        <p>
+          <a href="#" class="text-white" style="text-decoration:none;">#########</a>
+
+        </p>
+
+      </div>
+      <div class="col-md-4 col-lg-3 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Proposed PPT link</h5>
+        <p>
+          <i class="fas fa-home mr-3"></i><a href="https://docs.google.com/presentation/d/1q1e5NP2vCMH4IkhxMgFQDzz-lNxwJxfeerE3qytk6OU/edit?usp=sharing">Link to ppt</a>
+
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</footer>
+
+
+
+  </body>
+</html>
