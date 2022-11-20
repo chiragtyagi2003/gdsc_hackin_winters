@@ -80,8 +80,6 @@ def fetchprediction(backWhiteImg):
     """returns the predicted value and index"""
     return classifier.getPrediction(backWhiteImg)
 
-def convert(keyValue):
-    """converts the sign language into text and speech"""
 
 # open the webcam and detect the user's hand
 while True:
